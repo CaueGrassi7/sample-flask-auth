@@ -1,166 +1,162 @@
 # Flask Authentication Sample
 
-Este projeto é uma aplicação Flask que implementa autenticação de usuários usando bcrypt e Flask-Login. Ele permite o registro de usuários, login, logout e operações CRUD em usuários.
+This project is a Flask application that implements user authentication using bcrypt and Flask-Login. It allows user registration, login, logout, and CRUD operations on users.
 
-## Índice
+## Table of Contents
 
-- [Introdução](#introdução)
-- [Instalação](#instalação)
-- [Uso](#uso)
+- [Introduction](#introduction)
+- [Installation](#installation)
+- [Usage](#usage)
 - [Endpoints](#endpoints)
-- [Contribuição](#contribuição)
-- [Licença](#licença)
+- [Contributing](#contributing)
 
-## Introdução
+## Introduction
 
-Esta aplicação Flask fornece funcionalidades de autenticação, incluindo login, logout, registro e operações CRUD para usuários. As senhas são protegidas com bcrypt.
+This Flask application provides authentication functionalities, including login, logout, registration, and CRUD operations for users. Passwords are protected with bcrypt.
 
-## Instalação
+## Installation
 
-### Requisitos
+### Requirements
 
 - Python 3.7+
 - MySQL
 
-### Passos de Instalação
+### Installation Steps
 
-1. Clone o repositório:
+1. Clone the repository:
     ```sh
     git clone https://github.com/CaueGrassi7/sample-flask-auth.git
     ```
-2. Navegue até o diretório do projeto:
+2. Navigate to the project directory:
     ```sh
     cd sample-flask-auth
     ```
-3. Crie um ambiente virtual:
+3. Create a virtual environment:
     ```sh
     python -m venv venv
     ```
-4. Ative o ambiente virtual:
-    - No Windows:
+4. Activate the virtual environment:
+    - On Windows:
         ```sh
         venv\Scripts\activate
         ```
-    - No macOS/Linux:
+    - On macOS/Linux:
         ```sh
         source venv/bin/activate
         ```
-5. Instale as dependências:
+5. Install the dependencies:
     ```sh
     pip install -r requirements.txt
     ```
-6. Configure a string de conexão com o banco de dados MySQL no arquivo `app.py`:
+6. Configure the MySQL database connection string in the `app.py` file:
     ```python
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://usuario:senha@host:porta/nome_do_banco'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://user:password@host:port/database_name'
     ```
-7. Execute a aplicação:
+7. Run the application:
     ```sh
     python app.py
     ```
 
-## Uso
+## Usage
 
-A aplicação será executada em `http://127.0.0.1:5000/`.
+The application will run at `http://127.0.0.1:5000/`.
 
 ### Endpoints
 
-#### Registro de Usuário
+#### User Registration
 - **URL:** `/user`
-- **Método:** `POST`
-- **Descrição:** Registra um novo usuário.
-- **Dados da Requisição:**
+- **Method:** `POST`
+- **Description:** Registers a new user.
+- **Request Data:**
     ```json
     {
-        "username": "seu_usuario",
-        "password": "sua_senha"
+        "username": "your_username",
+        "password": "your_password"
     }
     ```
-- **Resposta de Sucesso:**
+- **Success Response:**
     ```json
     {
         "message": "User created"
     }
     ```
 
-#### Login de Usuário
+#### User Login
 - **URL:** `/login`
-- **Método:** `POST`
-- **Descrição:** Autentica um usuário.
-- **Dados da Requisição:**
+- **Method:** `POST`
+- **Description:** Authenticates a user.
+- **Request Data:**
     ```json
     {
-        "username": "seu_usuario",
-        "password": "sua_senha"
+        "username": "your_username",
+        "password": "your_password"
     }
     ```
-- **Resposta de Sucesso:**
+- **Success Response:**
     ```json
     {
         "message": "Logged in"
     }
     ```
 
-#### Logout de Usuário
+#### User Logout
 - **URL:** `/logout`
-- **Método:** `GET`
-- **Descrição:** Encerra a sessão do usuário logado.
-- **Resposta de Sucesso:**
+- **Method:** `GET`
+- **Description:** Logs out the current user.
+- **Success Response:**
     ```json
     {
         "message": "Logged out"
     }
     ```
 
-#### Leitura de Usuário
+#### Read User
 - **URL:** `/user/<int:id_user>`
-- **Método:** `GET`
-- **Descrição:** Retorna os detalhes de um usuário.
-- **Resposta de Sucesso:**
+- **Method:** `GET`
+- **Description:** Returns the details of a user.
+- **Success Response:**
     ```json
     {
-        "id": "id_do_usuario",
-        "username": "nome_do_usuario"
+        "id": "user_id",
+        "username": "user_name"
     }
     ```
 
-#### Atualização de Usuário
+#### Update User
 - **URL:** `/user/<int:id_user>`
-- **Método:** `PUT`
-- **Descrição:** Atualiza as informações de um usuário.
-- **Dados da Requisição:**
+- **Method:** `PUT`
+- **Description:** Updates user information.
+- **Request Data:**
     ```json
     {
-        "password": "nova_senha"
+        "password": "new_password"
     }
     ```
-- **Resposta de Sucesso:**
+- **Success Response:**
     ```json
     {
         "message": "User id_user updated"
     }
     ```
 
-#### Deleção de Usuário
+#### Delete User
 - **URL:** `/user/<int:id_user>`
-- **Método:** `DELETE`
-- **Descrição:** Deleta um usuário.
-- **Resposta de Sucesso:**
+- **Method:** `DELETE`
+- **Description:** Deletes a user.
+- **Success Response:**
     ```json
     {
         "message": "User id_user deleted"
     }
     ```
 
-## Contribuição
+## Contributing
 
-Contribuições são bem-vindas! Siga os passos abaixo para contribuir:
+Contributions are welcome! Follow the steps below to contribute:
 
-1. Faça um fork do projeto.
-2. Crie uma branch para sua feature ou correção (`git checkout -b feature/nova-feature`).
-3. Commit suas alterações (`git commit -am 'Adiciona nova feature'`).
-4. Envie para a branch (`git push origin feature/nova-feature`).
-5. Abra um Pull Request.
+1. Fork the project.
+2. Create a branch for your feature or bugfix (`git checkout -b feature/new-feature`).
+3. Commit your changes (`git commit -am 'Add new feature'`).
+4. Push to the branch (`git push origin feature/new-feature`).
+5. Open a Pull Request.
 
-## Licença
-
-Este projeto está licenciado sob a Licença MIT. Consulte o arquivo [LICENSE](LICENSE) para obter mais informações.
